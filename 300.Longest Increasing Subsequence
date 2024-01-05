@@ -1,0 +1,22 @@
+https://leetcode.com/problems/longest-increasing-subsequence/?envType=daily-question&envId=2024-01-05
+
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        int n= nums.size();
+        vector<int> Hello;
+
+        for(int i=0;i<n;i++){
+            auto it = lower_bound(begin(Hello), end(Hello), nums[i]);
+
+            if(it == end(Hello)){
+                Hello.push_back(nums[i]);
+            }
+            else{
+                *it = nums[i];
+            }
+        }
+        return Hello.size();
+    }
+};
