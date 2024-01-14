@@ -1,0 +1,27 @@
+Alright here is my solution for the question
+{
+vector<int>W1(26,0),W(26,0);
+set<char>S1,S2;
+
+int n=W1size.length();  
+int m=W2size.length();
+
+if(n!=m)
+return false;
+
+for(int i=0;i<n;i++){
+S1.insert(word1[i]);
+W1[word1[i]-'a']++;
+}
+for(int i=0;i<m;i++){
+S2.insert(word2[i]);
+W2[word1[i]-'a']++;
+}
+
+sort(W1.begin(),W1.end());
+sort(W2.begin(),W2.end());
+
+if(S1==S2 && W1==w2){
+return true;}
+return false;
+}
