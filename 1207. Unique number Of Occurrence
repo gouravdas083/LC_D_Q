@@ -1,0 +1,38 @@
+https://leetcode.com/problems/unique-number-of-occurrences/description/?envType=daily-question&envId=2024-01-17
+
+
+
+class Solution {
+public:
+       bool uniqueOccurrences(vector<int>& arr) {
+
+       
+//         unordered_map<int,int>Freq;
+
+//         for(int i=0;i<arr.size();i++){
+//             Freq[arr[i]]++;
+//         }
+        
+//         unordered_set<int>unique_freq;
+//         for(auto i:Freq){
+//             unique_freq.insert(i.second);
+//         }
+//         return Freq.size()==unique_freq.size();
+
+
+
+
+
+
+
+        unordered_map<int,int>Freq;
+        unordered_set<int>unique_freq;
+        for(int i=0;i<arr.size();i++){
+        Freq[arr[i]]++;
+        }
+        for(auto i:Freq){
+        unique_freq.insert(i.second);
+        }
+        return Freq.size()==unique_freq.size();
+    }
+};
