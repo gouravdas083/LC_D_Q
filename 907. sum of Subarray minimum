@@ -1,0 +1,53 @@
+https://leetcode.com/problems/sum-of-subarray-minimums/?envType=daily-question&envId=2024-01-20
+
+class Solution {
+public:
+vector<int> getNSL(vector<int>& arr, int n){
+vector<int>result;
+stack<int>st;
+for(int i=0;i<n;i++){
+if(st.empty()){
+result[i]= -1;
+}
+else{
+while(!st.empty() && st.top() > arr[i])
+st.pop();
+result[i] = st.empty? -1 : st.top();
+}
+st.push(i);
+}
+return result;
+}
+vector<int> getNSR(vector<int>& arr, int n){
+vector<int>result;
+stack<int>st;
+for(int i=n-1;i>=0;i--){
+if(st.empty()){
+result[i]= n;
+}
+else{
+while(!st.empty() && st.top() > arr[i])
+st.pop();
+result[i] = st.empty? n : st.top();
+}
+st.push(i);
+}
+return result;
+}
+
+int sumSubarrayMins(vector<int>& arr){
+int n=arr.size();
+long long sum=0;
+int modulo =1e9+7;
+vector<int>NSL = getNSL(arr, n);
+vector<int>NSR = getNSR(arr, n);
+for(int i=0;i<n;i++){
+long long leftside = i-NSL[i];
+long long rightside = NSR[i]-i;
+long long totalways = leftside*rightside;
+long long totalsum= arr[i]*totalways;
+sum = (sum+totalsum)%modulo;
+}
+return sum;
+}
+};
